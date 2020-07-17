@@ -1,0 +1,15 @@
+---
+- name: check mount to identity whether there is dc1 server
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+    - name: check mount with dc1 filers
+      shell: mount | grep -i 'dc1-'
+      #shell: date
+      register: output
+      ignore_errors: true
+
+    - name: output the mount result with dc1-
+      debug: var=output.stdout_lines
