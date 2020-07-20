@@ -7,9 +7,4 @@
   tasks:
     - name: check mount with dc1 filers
       shell: shutdown -r now
-      #shell: date
-      register: output
-      ignore_errors: true
 
-    - name: output the mount result with dc1-
-      debug: var=output.stdout_lines
