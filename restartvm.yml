@@ -16,7 +16,6 @@
       args:
         host: " {{ inventory_hostname }} "
         port: 22
-        delay: 30
+        delay: 10
         timeout: 180
-        state: started
       become: false
