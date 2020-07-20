@@ -5,6 +5,6 @@
   become: yes
 
   tasks:
-    - name: check mount with dc1 filers
+    - name: restart
       shell: shutdown -r now
 
