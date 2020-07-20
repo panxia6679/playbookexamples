@@ -2,9 +2,21 @@
 - name: restart vm 
   hosts: all
   gather_facts: no
-  become: yes
+  become: no
 
   tasks:
-    - name: restart
-      shell: shutdown -r now
+    - name: restart node
+      shell: sleep 10 && shutdown -r now
+      async: 300
+      poll: 0
+      become: true
 
+    - name: waiting for node booting up
+      local_action: wait_for
+      args:
+        host: ''
+        port: 22
+        delay: 30
+        timeout: 600
+        state: started
+      become: false
